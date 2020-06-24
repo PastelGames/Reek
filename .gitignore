@@ -53,6 +53,7 @@ sysinfo.txt
 
 # Merge Conflicts
 *.orig
+*.orig.meta
 
 # Builds
 *.apk
