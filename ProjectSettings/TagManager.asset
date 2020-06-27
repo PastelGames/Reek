@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Cat Ground
   layers:
   - Default
   - TransparentFX
@@ -15,9 +16,9 @@ TagManager:
   - 
   - 
   - Enemy
-  - 
-  - 
-  - 
+  - Cat
+  - Player
+  - Ground
   - 
   - 
   - 
