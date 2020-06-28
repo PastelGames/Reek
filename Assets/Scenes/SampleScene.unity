@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 147477223}
   - component: {fileID: 147477222}
   - component: {fileID: 147477225}
+  - component: {fileID: 147477226}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Ground
@@ -236,9 +237,9 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.00000011920929}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -249,8 +250,27 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.81, y: 1.8}
+  m_Size: {x: 2.81, y: 1.8000007}
   m_EdgeRadius: 0
+--- !u!251 &147477226
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147477221}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 90
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &204030046
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,7 +515,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b455ef597b267b540ba5727d5074b271, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -979,7 +999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b96ba9469b11c44a89c697086effa52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.15
+  speed: 0.29
+  theNPCPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1270343744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,6 +1443,7 @@ GameObject:
   - component: {fileID: 1668105183}
   - component: {fileID: 1668105185}
   - component: {fileID: 1668105184}
+  - component: {fileID: 1668105186}
   m_Layer: 9
   m_Name: Cat
   m_TagString: Untagged
@@ -1445,7 +1467,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b455ef597b267b540ba5727d5074b271, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1540,18 +1562,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.81, y: 1.8}
   m_EdgeRadius: 0
---- !u!114 &1668105184
-MonoBehaviour:
+--- !u!95 &1668105184
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668105179}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73dbaeec6bb4225419e6664e671598d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c1999fe6fe7657244b26f49480ad301e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1668105185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1564,7 +1593,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e6339d2ba66f4b4aada5cc38f374629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
+  tParam: 0
+  following: 0
+--- !u!114 &1668105186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668105179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73dbaeec6bb4225419e6664e671598d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1840293420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,6 +1758,7 @@ GameObject:
   - component: {fileID: 1862853704}
   - component: {fileID: 1862853703}
   - component: {fileID: 1862853705}
+  - component: {fileID: 1862853706}
   m_Layer: 9
   m_Name: Cat Platform
   m_TagString: Cat Ground
@@ -1813,6 +1856,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!251 &1862853706
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862853702}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &3223741036449410779
 PrefabInstance:
   m_ObjectHideFlags: 0
