@@ -18,16 +18,24 @@ public class IdleStanceCat : StateMachineBehaviour
         {
             Vector2 mousePos2D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            //if you click try to pounce into the ground you cant.
             if (!hit || (!hit.collider.CompareTag("Ground") && !hit.collider.CompareTag("Cat Ground")))
             {
                 animator.SetBool("Pouncing", true);
             }
+            //click the player to call the cat from anywhere
+            else if (hit.collider.CompareTag("Player"))
+            {
+
+            }
         }
 
+        //if the left mouse button is clicked then walk there
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetBool("Walking", true);
         }
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

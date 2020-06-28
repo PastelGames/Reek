@@ -22,6 +22,24 @@ public class FollowBezierRoute : MonoBehaviour
         
     }
 
+    public void FollowRouteUsingPosition(Vector2[] controlPoints)
+    {
+        if (tParam < 1)
+        {
+            tParam += Time.deltaTime * speed;
+
+            //quadratic bezier curve formula applied to position of object
+            transform.position = (1 - tParam) * ((1 - tParam) * controlPoints[0] + tParam * controlPoints[1])
+                + tParam * ((1 - tParam) * controlPoints[1] + tParam * controlPoints[2]);
+
+            following = true;
+        }
+        else
+        {
+            following = false;
+        }
+    }
+
     public void FollowRoute(Vector2[] controlPoints)
     {
         if (tParam < 1)
