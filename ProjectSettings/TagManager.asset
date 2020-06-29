@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Cat Ground
+  - Interactable
   layers:
   - Default
   - TransparentFX

@@ -19,7 +19,6 @@ public class LocketMelee : MonoBehaviour
                for (int i =0; i < enemiesDamaged.Length; i++){
                    enemiesDamaged[i].GetComponent<Enemy>().DamageTaken(damage);
                }
-
            }
            attackDiff = startTimeBtwAttack;
        }
@@ -28,6 +27,7 @@ public class LocketMelee : MonoBehaviour
            attackDiff -= Time.deltaTime;
        }
    }
+
    void OnDrawGizmosSelected(){
        Gizmos.color = Color.red;
        Gizmos.DrawWireSphere(attackPos.position, attackRange);
