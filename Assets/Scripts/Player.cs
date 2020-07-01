@@ -8,7 +8,15 @@ public class Player : MonoBehaviour
     public float interactLength;
     public Transform interactPosit;
 
-    void Update(){
+    CameraFollow cf;
+    GameObject cat;
+ private void Start()
+    {
+        cf = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
+        cat = GameObject.FindGameObjectWithTag("Cat");
+    }
+
+void Update(){
         //Interactable Keybind
         if(Input.GetKeyDown(KeyCode.E)){
             Debug.Log("Interact button was clicked");
@@ -20,10 +28,12 @@ public class Player : MonoBehaviour
                        Debug.Log(inRangeObjects[i].name);
                 }
              
-            }
-            
-
-
+	//if the mouse wheel is scrolled
+        if (Mathf.Abs(Input.mouseScrollDelta.y) > .3f)
+        {
+            //if they are the player at the time of switching then switch to the cat
+            if (cf.target == transform) cf.target = cat.transform;
+            //if they are the cat at the time of switching switch to the player
+            else cf.target = transform;
         }
-    }
 }
