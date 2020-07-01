@@ -26,11 +26,11 @@ public class StartBossFight : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             door.SetActive(true);
-        }
 
-        mainCamera.SetActive(false);
-        mainCamera.tag = "Untagged";
-        bossCamera.SetActive(true);
-        bossCamera.tag = "MainCamera";
+            mainCamera.SetActive(false);
+            mainCamera.tag = "Untagged";
+            bossCamera.SetActive(true);
+            bossCamera.tag = "MainCamera";
+        }
     }
 }

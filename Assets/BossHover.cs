@@ -7,7 +7,7 @@ public class BossHover : StateMachineBehaviour
 
     public float travelVelocity;
     Vector2 lastPos;
-    float threshold = .02f;
+    float threshold = .001f;
 
     Rigidbody2D rb;
 
@@ -55,9 +55,7 @@ public class BossHover : StateMachineBehaviour
     {
         Vector2 currentPos = animator.transform.position;
         float offset = Vector2.Distance(currentPos, lastPos);
-        Debug.Log(offset);
-        Debug.Log(currentPos);
-        Debug.Log(lastPos);
+ 
         //has the object not moved?
         if (Mathf.Abs(offset) < threshold)
         {

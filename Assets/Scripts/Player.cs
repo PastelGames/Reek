@@ -4,31 +4,37 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int health; 
+    public int health;
     public float interactLength;
     public Transform interactPosit;
 
     CameraFollow cf;
     GameObject cat;
- private void Start()
+
+    private void Start()
     {
         cf = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         cat = GameObject.FindGameObjectWithTag("Cat");
     }
 
-void Update(){
+    void Update()
+    {
         //Interactable Keybind
-        if(Input.GetKeyDown(KeyCode.E)){
+        if (Input.GetKeyDown(KeyCode.E))
+        {
             Debug.Log("Interact button was clicked");
             //All objects in the circle 
-            Collider2D [] inRangeObjects = Physics2D.OverlapCircleAll(interactPosit.position, interactLength);
-            for( int i =0; i<inRangeObjects.Length; i++)
+            Collider2D[] inRangeObjects = Physics2D.OverlapCircleAll(interactPosit.position, interactLength);
+            for (int i = 0; i < inRangeObjects.Length; i++)
             {
-                if(inRangeObjects[i].gameObject.CompareTag("Interactable")){
-                       Debug.Log(inRangeObjects[i].name);
+                if (inRangeObjects[i].gameObject.CompareTag("Interactable"))
+                {
+                    Debug.Log(inRangeObjects[i].name);
                 }
-             
-	//if the mouse wheel is scrolled
+            }
+
+        }
+        //if the mouse wheel is scrolled
         if (Mathf.Abs(Input.mouseScrollDelta.y) > .3f)
         {
             //if they are the player at the time of switching then switch to the cat
@@ -36,4 +42,5 @@ void Update(){
             //if they are the cat at the time of switching switch to the player
             else cf.target = transform;
         }
+    }
 }
