@@ -5,6 +5,9 @@ using UnityEngine;
 public class PouncingState : StateMachineBehaviour
 {
 
+    GameObject pp1;
+    GameObject pp2;
+
     GameObject cat;
     FollowBezierRoute fbr;
     BoxCollider2D col;
@@ -63,9 +66,12 @@ public class PouncingState : StateMachineBehaviour
         if (followRouteByPosition) fbr.FollowRouteUsingPosition(controlPoints); //follow the route by position
         else fbr.FollowRoute(controlPoints); //follow the route by velocity
 
-        //if the cat is currently on the path do not enable the colliders in order to pass through surfaces
-        if (fbr.tParam < 0.8f) col.enabled = false;
-        else col.enabled = true;
+        //if the cat is currently on the path by velocity do not enable the colliders in order to pass through surfaces
+        if (followRouteByPosition)
+        {
+            if (fbr.tParam < 0.8f) col.enabled = false;
+            else col.enabled = true;
+        }
 
         //if they pounce to the player, no matter where they are, they should repounce midair
         if (Input.GetMouseButtonDown(1))
