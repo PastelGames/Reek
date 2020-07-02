@@ -4118,6 +4118,7 @@ MonoBehaviour:
   door: {fileID: 770122143}
   mainCamera: {fileID: 519420028}
   bossCamera: {fileID: 1580841345}
+  boss: {fileID: 1426990222}
 --- !u!61 &2111064127
 BoxCollider2D:
   m_ObjectHideFlags: 0
