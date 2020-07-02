@@ -1146,7 +1146,7 @@ GameObject:
   - component: {fileID: 513694556}
   m_Layer: 0
   m_Name: Door (2)
-  m_TagString: Untagged
+  m_TagString: RightBound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1812,11 +1812,11 @@ GameObject:
   - component: {fileID: 770122144}
   m_Layer: 0
   m_Name: Door (1)
-  m_TagString: Untagged
+  m_TagString: LeftBound
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &770122144
 BoxCollider2D:
   m_ObjectHideFlags: 0

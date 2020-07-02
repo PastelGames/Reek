@@ -8,6 +8,9 @@ TagManager:
   - Cat Ground
   - Interactable
   - Cat
+  - LeftBound
+  - RightBound
+  - Bomb
   layers:
   - Default
   - TransparentFX

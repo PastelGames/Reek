@@ -21,8 +21,11 @@ public class DoorKey : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Destroy(this.gameObject);
-        if (col.gameObject.CompareTag("Cat")) Destroy(door);
+        if (col.gameObject.CompareTag("Cat"))
+        {
+            Destroy(door);
+            Destroy(this.gameObject);
+        }
     }
 
 }

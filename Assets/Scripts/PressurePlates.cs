@@ -6,10 +6,13 @@ public class PressurePlates : MonoBehaviour
 {
     public bool doorOpen;
 
-    void OnTriggerEnter2D(Collider2D col){
-        if(!doorOpen)
-        {
-            doorOpen = true;
-        }
+    void OnTriggerStay2D(Collider2D col)
+    {
+        doorOpen = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        doorOpen = false;
     }
 }

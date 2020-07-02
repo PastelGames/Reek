@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossHover : StateMachineBehaviour
+public class BossAttackCooldown : StateMachineBehaviour
 {
 
-    public float travelVelocity;
-    Vector2 lastPos;
-
-    Rigidbody2D rb;
+    public float cooldownTime;
+    float timeElapsed;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        rb = animator.GetComponent<Rigidbody2D>();
+        timeElapsed = 0;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //make the object coast to the right
-        rb.velocity = Vector2.right * travelVelocity;
+        if (timeElapsed < cooldownTime)
+        {
+            timeElapsed += Time.deltaTime;
+        }
+        else
+        {
+            animator.SetBool("Dropping Bombs", true);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

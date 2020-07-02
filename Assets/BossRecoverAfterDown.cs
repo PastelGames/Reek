@@ -44,6 +44,9 @@ public class BossRecoverAfterDown : StateMachineBehaviour
         Physics2D.IgnoreCollision(animator.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Cat").GetComponent<Collider2D>(), false);
         Physics2D.IgnoreCollision(animator.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>(), false);
 
+        //make the boss invincible for a short period of time
+        animator.SetBool("Invincible", true);
+
         animator.ResetTrigger("Recovery Complete");
     }
 

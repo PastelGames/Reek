@@ -25,14 +25,8 @@ public class Boss : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Cat"))
-        {
-            anim.SetBool("Down", true);
-        }
-        else
-        {
-            //flip directions if they hit a wall
-            bh.travelVelocity *= -1;
-        }
+        if (collision.gameObject.CompareTag("Cat")) anim.SetBool("Down", true);
+        if (collision.gameObject.CompareTag("LeftBound") && bh.travelVelocity < 0) bh.travelVelocity *= -1;
+        if (collision.gameObject.CompareTag("RightBound") && bh.travelVelocity > 0) bh.travelVelocity *= -1;
     }
 }

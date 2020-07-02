@@ -2,25 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossHover : StateMachineBehaviour
+public class BossDropBombs : StateMachineBehaviour
 {
+    public GameObject bomb;
 
-    public float travelVelocity;
-    Vector2 lastPos;
-
-    Rigidbody2D rb;
+    public float timeToSpendDroppingBombs;
+    public float bombDropRate;
+    float timeToDropNextBomb;
+    float timeElapsed;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        rb = animator.GetComponent<Rigidbody2D>();
+        timeElapsed = 0;
+        timeToDropNextBomb = 0;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //make the object coast to the right
-        rb.velocity = Vector2.right * travelVelocity;
+        if (timeElapsed <= timeToSpendDroppingBombs)
+        {
+            timeElapsed += Time.deltaTime;
+
+            if (timeElapsed > timeToDropNextBomb)
+            {
+                //drop a bomb
+                Instantiate(bomb, animator.transform.position, Quaternion.identity);
+                //set the next bomb drop at current time elapsed + bombDropRate
+                timeToDropNextBomb = timeElapsed + bombDropRate;
+            }
+            
+        }
+        else
+        {
+            animator.SetBool("Dropping Bombs", false);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

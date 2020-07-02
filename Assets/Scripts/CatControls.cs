@@ -5,11 +5,14 @@ using UnityEngine;
 public class CatControls : MonoBehaviour
 {
     Animator anim;
+    Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
     }
 
     // Update is called once per frame
