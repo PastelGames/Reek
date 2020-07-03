@@ -6,16 +6,24 @@ public class BossDown : StateMachineBehaviour
 {
 
     Rigidbody2D rb;
+    Enemy nme;
 
     public float downTime = 4f;
     float timeElapsed;
+    float healthOnPreviousUpdate;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         rb = animator.GetComponent<Rigidbody2D>();
 
+        nme = animator.GetComponent<Enemy>();
+
+        nme.vulnerable = true;
+
         timeElapsed = 0;
+
+        healthOnPreviousUpdate = nme.health;
 
         //ignore the collisions with the player and the cat after it has been hit
         Physics2D.IgnoreCollision(animator.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Cat").GetComponent<Collider2D>(), true);
@@ -36,6 +44,15 @@ public class BossDown : StateMachineBehaviour
         else
         {
             animator.SetBool("Down", false);
+            nme.vulnerable = false;
+        }
+
+        //check every frame to see if the boss has lost any health
+        //if they lost health then recover
+        if (nme.health < healthOnPreviousUpdate)
+        {
+            animator.SetBool("Down", false);
+            nme.vulnerable = false;
         }
     }
 

@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
     {
     public int health;
-    public float speed; 
+    public float speed;
+    public bool vulnerable = true;
     
     void Update()
     {
@@ -13,8 +14,12 @@ public class Enemy : MonoBehaviour
          Destroy(gameObject);
      }
     }
+
     public void DamageTaken(int damage){
-        health -= damage;
-        Debug.Log("enemy has been hit!");
+        if (vulnerable)
+        {
+            health -= damage;
+            Debug.Log("enemy has been hit!");
+        }
     }
 }
