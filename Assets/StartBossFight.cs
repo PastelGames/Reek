@@ -37,6 +37,9 @@ public class StartBossFight : MonoBehaviour
 
             //start the bosses movement
             boss.GetComponent<Animator>().SetTrigger("Boss Fight Started");
+
+            //set the bosses health in the animator
+            boss.GetComponent<Animator>().SetInteger("Health", boss.GetComponent<Enemy>().health);
         }
     }
 }

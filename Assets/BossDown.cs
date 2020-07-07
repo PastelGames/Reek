@@ -51,6 +51,7 @@ public class BossDown : StateMachineBehaviour
         //if they lost health then recover
         if (nme.health < healthOnPreviousUpdate)
         {
+            animator.SetInteger("Health", nme.health);
             animator.SetBool("Down", false);
             nme.vulnerable = false;
         }
