@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowBezierRoute : MonoBehaviour
 {
     public float tParam = 0;
-    float speed = 1;
+    public float speed = 1;
     public bool following; //is the path being followed currently
 
     Rigidbody2D rb;
@@ -13,7 +13,8 @@ public class FollowBezierRoute : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        Debug.Log(rb.velocity);
     }
 
     // Update is called once per frame
@@ -42,6 +43,9 @@ public class FollowBezierRoute : MonoBehaviour
 
     public void FollowRoute(Vector2[] controlPoints)
     {
+
+        //Debug.Log(controlPoints[0].ToString() + controlPoints[1].ToString() + controlPoints[2].ToString());
+
         if (tParam < 1)
         {
             tParam += Time.deltaTime * speed;
@@ -55,6 +59,30 @@ public class FollowBezierRoute : MonoBehaviour
         {
             following = false;
         }
+    }
+
+    public IEnumerator FollowRouteRoutine(Vector2[] controlPoints)
+    {
+        // Debug.Log(controlPoints[0].ToString() + controlPoints[1].ToString() + controlPoints[2].ToString());
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+        while (tParam < 1)
+        {
+            tParam += Time.deltaTime * speed;
+
+            //quadratic bezier curve formula (first derivative) applied to velocity of object
+            rb.velocity = 2 * (1 - tParam) * (controlPoints[1] - controlPoints[0]) + 2 * tParam * (controlPoints[2] - controlPoints[1]);
+
+            following = true;
+
+            yield return new WaitForEndOfFrame();
+        }
+        following = false;
+    }
+
+    public void StartFollowRouteRoutine(Vector2[] controlPoints)
+    {
+        StartCoroutine(FollowRouteRoutine(controlPoints));
     }
 
 }
