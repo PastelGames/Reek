@@ -9,6 +9,8 @@ public class Boss : MonoBehaviour
     BossHover bh;
     Animator anim;
 
+    public bool invis;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,5 +30,15 @@ public class Boss : MonoBehaviour
         if (collision.gameObject.CompareTag("Cat")) anim.SetBool("Down", true);
         if (collision.gameObject.CompareTag("LeftBound") && bh.travelVelocity < 0) bh.travelVelocity *= -1;
         if (collision.gameObject.CompareTag("RightBound") && bh.travelVelocity > 0) bh.travelVelocity *= -1;
+    }
+
+    private void OnBecameInvisible()
+    {
+        invis = true;
+    }
+
+    private void OnBecameVisible()
+    {
+        invis = false;
     }
 }

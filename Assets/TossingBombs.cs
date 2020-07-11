@@ -8,6 +8,7 @@ public class TossingBombs : StateMachineBehaviour
     public float timeBetweenTossing;
     float downTime;
     public float bombTossHeight = 5; //the height of the second control point in the toss
+    public float bombSpeed;
 
     public GameObject bomb;
     GameObject player;
@@ -18,6 +19,8 @@ public class TossingBombs : StateMachineBehaviour
         downTime = 0;
 
         player = GameObject.FindGameObjectWithTag("Player");
+
+        animator.ResetTrigger("Boss Fight Sequence 2");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -35,10 +38,13 @@ public class TossingBombs : StateMachineBehaviour
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        //reset all triggers
+        animator.ResetTrigger("Boss Fight Sequence 2");
+        animator.ResetTrigger("Recovery Complete");
+        animator.ResetTrigger("Boss Fight Started");
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -64,5 +70,6 @@ public class TossingBombs : StateMachineBehaviour
 
         //follow the route given by the control points
         newBomb.GetComponent<FollowBezierRoute>().StartFollowRouteRoutine(cps);
+        newBomb.GetComponent<FollowBezierRoute>().speed = bombSpeed;
     }
 }

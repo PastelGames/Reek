@@ -71,7 +71,8 @@ public class FollowBezierRoute : MonoBehaviour
             tParam += Time.deltaTime * speed;
 
             //quadratic bezier curve formula (first derivative) applied to velocity of object
-            rb.velocity = 2 * (1 - tParam) * (controlPoints[1] - controlPoints[0]) + 2 * tParam * (controlPoints[2] - controlPoints[1]);
+            rb.position = (1 - tParam) * ((1 - tParam) * controlPoints[0] + tParam * controlPoints[1])
+                + tParam * ((1 - tParam) * controlPoints[1] + tParam * controlPoints[2]);
 
             following = true;
 

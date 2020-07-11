@@ -2,34 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InitiateBossFightStage2 : StateMachineBehaviour
+public class LeapUp : StateMachineBehaviour
 {
-    Transform destination;
+    Rigidbody2D rb;
+    Boss boss;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        destination = GameObject.Find("Boss Fight Sequence 2 Location").transform;
-
-        animator.SetBool("Down", false);
+        rb = animator.GetComponent<Rigidbody2D>();
+        boss = animator.GetComponent<Boss>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (Vector2.Distance(animator.transform.position, destination.position) < 0.5f)
+        if (!boss.invis)
         {
-            animator.SetTrigger("Boss Fight Sequence 2 Started");
+            //leap up until outside of the camera
+            rb.velocity = Vector2.up * 4;
         }
-        //move to the expected location
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, destination.position, Time.deltaTime * 2);
+        else
+        {
+            //move on to the next state
+            animator.SetTrigger("Ready To Fall");
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -42,4 +46,6 @@ public class InitiateBossFightStage2 : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+
+    
 }

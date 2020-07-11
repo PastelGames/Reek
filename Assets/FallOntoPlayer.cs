@@ -2,28 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InitiateBossFightStage2 : StateMachineBehaviour
+public class FallOntoPlayer : StateMachineBehaviour
 {
-    Transform destination;
+
+    Rigidbody2D rb;
+    GameObject player;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        destination = GameObject.Find("Boss Fight Sequence 2 Location").transform;
+        rb = animator.GetComponent<Rigidbody2D>();
 
-        animator.SetBool("Down", false);
+        animator.ResetTrigger("Ready To Fall");
+
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        //teleport above the player
+        rb.position = new Vector2(player.transform.position.x, animator.transform.position.y);
+
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        if (Vector2.Distance(animator.transform.position, destination.position) < 0.5f)
-        {
-            animator.SetTrigger("Boss Fight Sequence 2 Started");
-        }
-        //move to the expected location
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, destination.position, Time.deltaTime * 2);
-    }
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -42,4 +46,5 @@ public class InitiateBossFightStage2 : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+
 }

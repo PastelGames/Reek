@@ -11,6 +11,7 @@ TagManager:
   - LeftBound
   - RightBound
   - Bomb
+  - Boss
   layers:
   - Default
   - TransparentFX
