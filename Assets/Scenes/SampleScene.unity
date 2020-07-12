@@ -2846,6 +2846,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb4cfef815796844a623c05c6d584b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invis: 0
+  grounded: 0
 --- !u!212 &1426990226
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2941,7 +2943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c6860f01234204192f978b8a649d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 6
+  health: 3
   speed: 0
   vulnerable: 1
 --- !u!1 &1449286474

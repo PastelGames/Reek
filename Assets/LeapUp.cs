@@ -12,6 +12,8 @@ public class LeapUp : StateMachineBehaviour
     {
         rb = animator.GetComponent<Rigidbody2D>();
         boss = animator.GetComponent<Boss>();
+
+        animator.SetBool("Boss Missed", false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

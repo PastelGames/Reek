@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
     Animator anim;
 
     public bool invis;
+    public bool grounded;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,17 @@ public class Boss : MonoBehaviour
         if (collision.gameObject.CompareTag("Cat")) anim.SetBool("Down", true);
         if (collision.gameObject.CompareTag("LeftBound") && bh.travelVelocity < 0) bh.travelVelocity *= -1;
         if (collision.gameObject.CompareTag("RightBound") && bh.travelVelocity > 0) bh.travelVelocity *= -1;
+        if (collision.gameObject.CompareTag("Ground")) grounded = true;
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground")) grounded = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground")) grounded = false;
     }
 
     private void OnBecameInvisible()
@@ -41,4 +53,6 @@ public class Boss : MonoBehaviour
     {
         invis = false;
     }
+
+
 }
