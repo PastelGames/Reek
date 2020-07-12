@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : MonoBehaviour
 {
     public int health;
     public float interactLength;
     public Transform interactPosit;
+    Dialogue dialogue;
 
     CameraFollow cf;
     GameObject cat;
@@ -15,6 +17,7 @@ public class Player : MonoBehaviour
     {
         cf = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>();
         cat = GameObject.FindGameObjectWithTag("Cat");
+        dialogue = GameObject.Find("Dialogue Manager").GetComponent<Dialogue>();
     }
 
     void Update()
@@ -30,6 +33,10 @@ public class Player : MonoBehaviour
                 if (inRangeObjects[i].gameObject.CompareTag("Interactable"))
                 {
                     Debug.Log(inRangeObjects[i].name);
+                }
+                if (inRangeObjects[i].gameObject.CompareTag("NPCDialogue"))
+                {
+                    StartCoroutine(dialogue.Type());
                 }
             }
 

@@ -12,6 +12,7 @@ TagManager:
   - RightBound
   - Bomb
   - Boss
+  - NPCDialogue
   layers:
   - Default
   - TransparentFX

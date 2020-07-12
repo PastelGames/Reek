@@ -8,6 +8,7 @@ public class LocketMelee : MonoBehaviour
    public float startTimeBtwAttack;
    public Transform attackPos;
    public float attackRange;
+   
    public LayerMask whatIsEnemies;
    public int damage;
    void Update()
