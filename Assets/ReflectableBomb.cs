@@ -53,6 +53,7 @@ public class ReflectableBomb : MonoBehaviour
             //boss takes damage if hit by reflected bomb
             boss.GetComponent<Enemy>().DamageTaken(1);
             boss.GetComponent<Animator>().SetInteger("Health", boss.GetComponent<Enemy>().health);
+            Debug.Log("Boss hit with reflectable bomb");
             Destroy(gameObject);
         }
 

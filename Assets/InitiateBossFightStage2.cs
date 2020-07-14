@@ -12,6 +12,9 @@ public class InitiateBossFightStage2 : StateMachineBehaviour
         destination = GameObject.Find("Boss Fight Sequence 2 Location").transform;
 
         animator.SetBool("Down", false);
+
+        //make the boss kinematic
+        animator.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

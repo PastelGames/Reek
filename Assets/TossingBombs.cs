@@ -21,6 +21,8 @@ public class TossingBombs : StateMachineBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         animator.ResetTrigger("Boss Fight Sequence 2");
+
+        animator.GetComponent<Enemy>().vulnerable = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
