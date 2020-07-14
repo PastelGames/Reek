@@ -44,6 +44,7 @@ public class BossDown : StateMachineBehaviour
         else
         {
             animator.SetBool("Down", false);
+            animator.SetBool("Ready To Fall", false);
             nme.vulnerable = false;
         }
 
@@ -53,6 +54,7 @@ public class BossDown : StateMachineBehaviour
         {
             animator.SetInteger("Health", nme.health);
             animator.SetBool("Down", false);
+            animator.SetBool("Ready To Fall", false);
             nme.vulnerable = false;
         }
     }

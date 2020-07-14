@@ -27,7 +27,7 @@ public class LeapUp : StateMachineBehaviour
         else
         {
             //move on to the next state
-            animator.SetTrigger("Ready To Fall");
+            animator.SetBool("Ready To Fall", true);
         }
     }
 

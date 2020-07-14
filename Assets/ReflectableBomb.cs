@@ -64,6 +64,7 @@ public class ReflectableBomb : MonoBehaviour
 
         else
         {
+
             Destroy(gameObject);
         }
     }

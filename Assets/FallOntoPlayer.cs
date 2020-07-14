@@ -22,7 +22,7 @@ public class FallOntoPlayer : StateMachineBehaviour
 
         boss = animator.GetComponent<Boss>();
 
-        animator.ResetTrigger("Ready To Fall");
+        animator.SetBool("Ready To Fall", false);
 
         player = GameObject.FindGameObjectWithTag("Player");
 

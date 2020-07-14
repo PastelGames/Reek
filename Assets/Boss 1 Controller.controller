@@ -51,6 +51,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: Health
     m_EventTreshold: 7
+  - m_ConditionMode: 2
+    m_ConditionEvent: Boss Fight Sequence 2 Started
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2631894139574687423}
   m_Solo: 0
@@ -307,6 +310,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Down
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Boss Fight Sequence 2 Started
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2645741024524718224}
   m_Solo: 0
@@ -433,8 +439,11 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: Down
+    m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: Recovery Complete
+    m_ConditionEvent: Boss Fight Sequence 2 Started
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -5621561580716487222}
@@ -635,18 +644,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Boss Fight Sequence 2 Started
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
-  - m_Name: Ready To Fall
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: Health
     m_Type: 3
     m_DefaultFloat: 0
@@ -654,6 +651,18 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Boss Missed
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: Boss Fight Sequence 2 Started
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: Ready To Fall
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -836,9 +845,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Down
-    m_EventTreshold: 0
-  - m_ConditionMode: 4
-    m_ConditionEvent: Health
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4681452102552605478}

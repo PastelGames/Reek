@@ -19,7 +19,7 @@ public class InitiateBossFightStage2 : StateMachineBehaviour
     {
         if (Vector2.Distance(animator.transform.position, destination.position) < 0.5f)
         {
-            animator.SetTrigger("Boss Fight Sequence 2 Started");
+            animator.SetBool("Boss Fight Sequence 2 Started", true);
         }
         //move to the expected location
         animator.transform.position = Vector2.MoveTowards(animator.transform.position, destination.position, Time.deltaTime * 2);
